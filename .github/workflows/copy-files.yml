@@ -16,7 +16,7 @@ jobs:
     - name: Copy Files
       run: |
         
-        cp -R practice-github-actions/dir1/* dir2/
+        cp -R ./practice-github-actions/dir1/* ./practice-github-actions/dir2/
     - name: Add Delay
       run: sleep 15  # Adjust the delay time as needed
 
