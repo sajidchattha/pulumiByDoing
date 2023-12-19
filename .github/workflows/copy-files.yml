@@ -18,10 +18,13 @@ jobs:
     - name: Copy Files
       run: |
         
-        cp -R ./practice-github-actions/dir1/* ./practice-github-actions/dir2/
-    - name: Add Delay
-      run: sleep 15  # Adjust the delay time as needed
+        rsync -r --ignore-existing ./practice-github-actions/dir1/ ./practice-github-actions/dir2/  # Replace 'source_folder' with the folder containing files to copy
 
+    - name: Display Newly Copied Files
+      run: |
+        echo "Newly copied files to dir2"
+        diff -rq ./practice-github-actions/dir1/ ./practice-github-actions/dir2/ | grep "Only in ./practice-github-actions/dir2/" | sed 's/Only in ./practice-github-actions/dir2/ //'
+        - name: Add Delay
     - name: Commit and Push Changes
       run: |
         git config --local user.email "abc@example.com"
