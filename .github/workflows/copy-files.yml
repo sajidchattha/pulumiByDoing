@@ -27,7 +27,7 @@ jobs:
 
     
     
-        - name: Add Delay
+    - name: Add Delay
       run: |
         total_iterations=10  # Adjust the total number of iterations as needed
         for ((i=1; i<=${total_iterations}; i++)); do
