@@ -33,7 +33,7 @@ jobs:
         for ((i=1; i<=${total_iterations}; i++)); do
           percentage=$((i * 100 / total_iterations))
           echo -ne "Copying files: ${percentage}%\r"
-          sleep 0.10
+          sleep 5
         done
         echo  # Move to the next line after the loading bar
 
