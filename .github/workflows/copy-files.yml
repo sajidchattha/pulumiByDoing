@@ -1,0 +1,27 @@
+name: Copy all Files to Another Folder
+
+on:
+  push:
+    branches:
+      - main  # Adjust the branch as needed
+
+jobs:
+  copy-files:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Copy Files
+      run: |
+        
+        cp -R practice-github-actions/dir1/* practice-github-actions/dir2/  
+    - name: Add Delay
+      run: sleep 15  # Adjust the delay time as needed
+
+    - name: Commit and Push Changes
+      run: |
+        git add .
+        git commit -m "Copy files to destination_folder"
+        git push
