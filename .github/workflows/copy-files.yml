@@ -37,10 +37,3 @@ jobs:
         done
         echo  # Move to the next line after the loading bar
 
-    - name: Commit and Push Changes
-      run: |
-        git config --local user.email "abc@example.com"
-        git config --local user.name "GitHub Action"
-        git add .
-        git commit -m "Copy files to destination_folder"
-        git push
