@@ -12,6 +12,8 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
+      with:
+          token: ${{ secrets.MY_PERSONAL_ACCESS_TOKEN_NO_1}}
 
     - name: Copy Files
       run: |
