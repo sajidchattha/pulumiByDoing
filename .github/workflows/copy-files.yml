@@ -18,22 +18,14 @@ jobs:
     - name: Copy Files
       run: |
         
-        rsync -r --ignore-existing ./practice-github-actions/dir1/ ./practice-github-actions/dir2/  # Replace 'source_folder' with the folder containing files to copy
-
-    - name: Display Newly Copied Files
-      run: |
-        echo "Newly copied files to destination_folder:"
-        diff -rq ./practice-github-actions/dir1/ ./practice-github-actions/dir2/ | grep "Only in destination_folder:" | sed 's/Only in destination_folder: //'
-
-    
-    
+        cp -R ./practice-github-actions/dir1/* ./practice-github-actions/dir2/
     - name: Add Delay
-      run: |
-        total_iterations=10  # Adjust the total number of iterations as needed
-        for ((i=1; i<=${total_iterations}; i++)); do
-          percentage=$((i * 100 / total_iterations))
-          echo -ne "Copying files: ${percentage}%\r"
-          sleep 5
-        done
-        echo  # Move to the next line after the loading bar
+      run: sleep 15  # Adjust the delay time as needed
 
+    - name: Commit and Push Changes
+      run: |
+        git config --local user.email "abc@example.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git commit -m "Copy files to destination_folder"
+        git push
