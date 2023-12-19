@@ -22,9 +22,21 @@ jobs:
 
     - name: Display Newly Copied Files
       run: |
-        echo "Newly copied files to dir2"
-        diff -rq ./practice-github-actions/dir1/ ./practice-github-actions/dir2/ | grep "Only in ./practice-github-actions/dir2/" | sed 's/Only in ./practice-github-actions/dir2/ //'
+        echo "Newly copied files to destination_folder:"
+        diff -rq ./practice-github-actions/dir1/ ./practice-github-actions/dir2/ | grep "Only in destination_folder:" | sed 's/Only in destination_folder: //'
+
+    
+    
         - name: Add Delay
+      run: |
+        total_iterations=10  # Adjust the total number of iterations as needed
+        for ((i=1; i<=${total_iterations}; i++)); do
+          percentage=$((i * 100 / total_iterations))
+          echo -ne "Copying files: ${percentage}%\r"
+          sleep 20
+        done
+        echo  # Move to the next line after the loading bar
+
     - name: Commit and Push Changes
       run: |
         git config --local user.email "abc@example.com"
